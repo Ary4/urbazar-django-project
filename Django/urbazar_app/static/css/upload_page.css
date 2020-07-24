@@ -1,0 +1,54 @@
+body {
+  padding-top: 54px;
+}
+
+@media (min-width: 992px) {
+  body {
+    padding-top: 70px;
+  }
+}
+
+nav {
+  padding-bottom: 40px;
+  background-color: teal;
+}
+
+#my-form{
+padding-bottom: 200px
+}
+
+.imgsize{
+  width: 60px;
+  height: 60px;
+  margin-left: 0px;
+  margin-right: 5px;
+  border-radius: 50%;
+}
+
+.row {
+  padding-left: 75px;
+  padding-right: 75px;
+}
+.col-md-7 {
+  width: 350px;
+  height: 350px;
+}
+
+.img-fluid {
+    position: relative;
+    float: left;
+    width:  350px;
+    height: 350px;
+    /* background-position: 50% 50%; */
+    /* background-repeat:   no-repeat; */
+    /* background-size:     cover; */
+}
+
+#foot{
+position:fixed;
+margin-top:10px;
+bottom:0px;
+width:100%;
+height: auto;
+display: grid;
+}

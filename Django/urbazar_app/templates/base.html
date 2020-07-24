@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    {% load static %}
+    {% block title %}<title>UrBazar</title>{% endblock %}
+      <link rel="shortcut icon" type="image/png" href="{%  static 'img/logo.jpeg' %}"/>
+    {% block styles %}<!-- Styles for every page might vary-->{% endblock %}
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <div class="container">
+          <a class="navbar-brand" href="{% url 'home' %}">
+            <!-- { % block logo %}<img class="imgsize" type="image/png" src="{ % static 'img/logo.jpeg' %}">{ % endblock %}-->
+            <img class="imgsize" height="25px" type="image/png" src="{% static 'img/logo.jpeg' %}">
+              UrBazar
+          </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse justify-content-end" id="navbarsExampleDefault">
+              <ul class="navbar-nav m-auto">
+                  <li class="nav-item">
+                      <a class="nav-link" href="{% url 'home' %}">
+                        <i class="fa fa-home"></i> Home
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="{% url 'upload' %}">
+                        <i class="fa fa-arrow-up"></i> Upload Product
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="{% url 'flag' %}">
+                        <i class="fa fa-flag"></i> Flagged Items
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="{% url 'user' %}">
+                        <i class="fa fa-user"></i> Your Profile
+                      </a>
+                    </li>
+                </ul>
+                <form class="form-inline my-2 my-lg-0" method='GET' action='{% url 'search' %}'>
+                  {% block search %}
+                  <div class="input-group input-group-sm">
+                    <input type="text" class="form-control" name='q' placeholder="Search..." value={{entered_text}}>
+                    <div class="input-group-append">
+                        <button class="btn btn-block btn-lg btn-primary" type='submit' value='Search' ><i class="fa fa-search"></i></button>
+                    </div>
+                  </div>
+                  {% endblock %}
+                  {% if user.is_authenticated %}
+                    <a class="btn btn-danger btn-sm ml-3" href="{% url 'logout'%}">Log Out </a>
+                  {% else %}
+                    <a class="btn btn-success btn-sm ml-3"  href="{% url 'login'%}?next{'/accounts/login'}">Sign-in/Register
+                    </a>
+                  {% endif %}
+                  </form>
+          </div>
+        </div>
+  </nav>
+  {% block content %}<!-- default content text (typically empty) -->{% endblock %}
+  {% block footer %}
+  <footer id="foot" class="py-5 bg-dark" style="position: static">
+  {% endblock %}
+
+  </footer>
+  </body>
+</html>
